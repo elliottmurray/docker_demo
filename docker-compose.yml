@@ -1,0 +1,23 @@
+---
+version: '2'
+services:
+  demo:
+    build:
+      context: .
+    working_dir: /usr/src/app
+    environment:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+      - AWS_DEFAULT_REGION
+      - DYNAMODB_ENDPOINT=http://demo-dynamodb:8000
+    ports:
+      - "8080:8080"
+    volumes:
+      - ~/.m2:/root/.m2
+      - .:/usr/src/app
+
+  demo-dynamodb:
+    image: peopleperhour/dynamodb
+    ports:
+      - "6000:8000"
+
