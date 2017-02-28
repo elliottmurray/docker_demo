@@ -6,7 +6,7 @@ services:
       context: .
     working_dir: /usr/src/app
     environment:
-      - REDIS_ENDPOINT=http://demo-redis:8000
+      - REDIS_ENDPOINT=http://demo-redis:6379
     ports:
       - "8080:8080"
     volumes:
