@@ -12,7 +12,7 @@ You will need the following installed and running:
 
 ```shell
 docker-compose up -d demo-redis
-./gradelw bootRun
+./gradlew bootRun
 ```
 
 Starts Redis and then runs SpringBoot. This is available on port 8080. You should see in the logs:
@@ -25,5 +25,7 @@ You can run the whole thing in Docker:
 docker-compose up
 ``` 
 
-But you will need to configure the RedisTemplate in SpringBoot to use the environment variable instead of the default (localhost:6379)
+But you will need to do the following:
+* Configure the RedisTemplate in SpringBoot to use the environment variable REDIS_ENDPOINT instead of the default (localhost:6379)
+* Build the jar in gradle using the task assemble
 
