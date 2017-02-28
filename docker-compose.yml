@@ -1,23 +1,21 @@
 ---
-version: '2'
+version: '2.1'
 services:
   demo:
     build:
       context: .
     working_dir: /usr/src/app
     environment:
-      - AWS_ACCESS_KEY_ID
-      - AWS_SECRET_ACCESS_KEY
-      - AWS_DEFAULT_REGION
-      - DYNAMODB_ENDPOINT=http://demo-dynamodb:8000
+      - REDIS_ENDPOINT=http://demo-redis:8000
     ports:
       - "8080:8080"
     volumes:
       - ~/.m2:/root/.m2
       - .:/usr/src/app
-
-  demo-dynamodb:
-    image: peopleperhour/dynamodb
+    depends_on:
+      - demo-redis
+  demo-redis:
+    image: redis:alpine
     ports:
-      - "6000:8000"
-
+      - "6379:6379"
+ 
