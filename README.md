@@ -29,3 +29,15 @@ But you will need to do the following:
 * Configure the RedisTemplate in SpringBoot to use the environment variable REDIS_ENDPOINT instead of the default (localhost:6379)
 * Build the jar in gradle using the task assemble
 
+Or you can run 
+```shell
+docker-compose up demo-redis
+``` 
+
+and 
+```
+java -jar build/libs/demo-0.0.1-SNAPSHOT.jar
+```
+
+Will run redis in a container and SpringBoot on your host
+
